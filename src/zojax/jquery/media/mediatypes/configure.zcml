@@ -1,0 +1,15 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:z3c="http://namespaces.zope.org/z3c">
+
+  <adapter
+     factory=".widget.MediaTypeWidgetFactory" />
+
+  <z3c:widgetTemplate
+     mode="input"
+     widget=".interfaces.IMediaTypeWidget"
+     layer="z3c.form.interfaces.IFormLayer"
+     template="widget_input.pt" />
+
+</configure>
