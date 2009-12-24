@@ -1,0 +1,45 @@
+<select id="" name="" class="" tabindex="" disabled="" size="1"
+        tal:attributes="id view/id;
+                        name string:${view/name};
+                        class view/klass;
+                        style view/style;
+                        title view/title;
+                        lang view/lang;
+                        onclick view/onclick;
+                        ondblclick view/ondblclick;
+                        onmousedown view/onmousedown;
+                        onmouseup view/onmouseup;
+                        onmouseover view/onmouseover;
+                        onmousemove view/onmousemove;
+                        onmouseout view/onmouseout;
+                        onkeypress view/onkeypress;
+                        onkeydown view/onkeydown;
+                        onkeyup view/onkeyup;
+                        disabled view/disabled;
+                        tabindex view/tabindex;
+                        onfocus view/onfocus;
+                        onblur view/onblur;
+                        onchange view/onchange">
+  </select>
+<input name="field-empty-marker" type="hidden" value="1"
+       tal:attributes="name string:${view/name}-empty-marker" />
+<script type="text/javascript" tal:content="string: var id = '${view/id}'; var selected = '${view/value}';" />
+<script type="text/javascript">
+$(document).ready(function(){
+var x=document.getElementById(id);
+for (var i = 0; i < $.fn.media.defaults.types.length; i++)
+{
+  var y=document.createElement('option');
+  y.text=$.fn.media.defaults.types[i];
+  y.selected = selected == y.text;
+  try
+    {
+    x.add(y,null); // standards compliant
+    }
+  catch(ex)
+    {
+    x.add(y); // IE only
+    }
+};
+})
+</script>

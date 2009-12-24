@@ -1,0 +1,37 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax">
+
+  <!-- resources -->
+  <zojax:resourcedirectory
+     name="jquery-media"
+     directory="resources"
+     mapping=".css:zrt" />
+
+  <zojax:resourceinclude
+     name="swfobject.js"
+     library="jquery-plugins" require="jquery"
+     type="javascript" path="jquery-media/swfobject.js"
+     />
+
+  <zojax:resourceinclude
+     name="jquery.metadata.js"
+     library="jquery-plugins" require="jquery"
+     type="javascript" path="jquery-media/jquery.metadata.js"
+     />
+
+  <zojax:resourceinclude
+     name="jquery.jquery.media.js"
+     library="jquery-plugins" require="jquery"
+     type="javascript" path="jquery-media/jquery.media.js"
+     />
+
+  <zojax:resourceinclude
+     name="view.jquery.media.js"
+     library="jquery-plugins" require="jquery"
+     type="javascript" path="jquery-media/media.js"
+     />
+
+  <include package=".mediatypes" />
+
+</configure>
