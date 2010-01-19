@@ -1,44 +1,8 @@
-=======
-CHANGES
-=======
-
-0.92.2 (2009-11-30)
--------------------
-
-- fixed mediatypes widget js
-
-- flowplayer 3.1.5 used
-
-- fixed mp3 playing
+1.0.2 (Unreleased)
+------------------
 
 
-0.92.1 (2009-11-24)
--------------------
+1.0.1 (2010-01-19)
+------------------
 
-- fixed inclusion of js
-
-
-0.92.0 (2009-11-23)
--------------------
-
-- Changed flash player to FlowPayer
-
-- Included jquery.metatada
-
-
-0.85.3 (2009-09-16)
--------------------
-
-- Fixed resource library inclusion
-
-
-0.85.2 (2009-08-12)
--------------------
-
-- Do not use z3c.autoinclude
-
-
-0.85.1 (2009-03-15)
---------------------
-
-- JQuery media
+- zojax initial release
