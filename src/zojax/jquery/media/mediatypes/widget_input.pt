@@ -20,6 +20,7 @@
                         onfocus view/onfocus;
                         onblur view/onblur;
                         onchange view/onchange">
+    <option value="view/value" tal:condition="view/value" />
   </select>
 <input name="field-empty-marker" type="hidden" value="1"
        tal:attributes="name string:${view/name}-empty-marker" />
@@ -27,6 +28,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 var x=document.getElementById(id);
+x.options.length = 0;
 for (var i = 0; i < $.fn.media.defaults.types.length; i++)
 {
   var y=document.createElement('option');
