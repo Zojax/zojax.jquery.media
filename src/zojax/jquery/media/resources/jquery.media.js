@@ -301,9 +301,11 @@ $.fn.media.swf = function(el, opts) {
 
 	// swfobject v2+
 	if (window.swfobject) {
-		$(el).after($div).appendTo($div);
 		if (!el.id) el.id = 'movie_player_' + counter++;
-
+	    var id = el.id ? (' id="'+el.id+'"') : '';
+	    $div = $('<div' + id + cls + '>');
+        $(el).after($div).appendTo($div);
+		
 		// replace el with swfobject content
 		swfobject.embedSWF(opts.src, el.id, opts.width, opts.height, opts.flashVersion,
 			opts.expressInstaller, opts.flashvars, opts.params, opts.attrs);
