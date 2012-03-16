@@ -5,6 +5,8 @@ $(document).ready(function(){
     $.fn.media.defaults.flashvars =  {'plugins': '{ audio: { url: \'flowplayer.audio-3.1.2.swf\'} }'};
     $.fn.media.defaults.bgColor = 'transparent';
     $.fn.media.defaults.types = [];
+    $.fn.media.defaults.WistiaVideoPlayer =  'http://embed.wistia.com/flash/embed_player_v2.0.swf';
+    $.fn.media.defaults.WistiaAudioPlayer =  'http://prime-cdn.wistia.com/flash/audio_player.swf';
     for (var i in $.fn.media.defaults.players) {
 	$.fn.media.defaults.types = $.fn.media.defaults.types.concat($.fn.media.defaults.players[i].types.split(','))
     };

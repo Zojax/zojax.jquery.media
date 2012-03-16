@@ -187,6 +187,19 @@ $.fn.media.defaults.players = {
 			type:	  'application/x-oleobject'
 		}
 	},
+    wistia: {
+        name:		  'wistia',
+        title:		  'Wistia Media',
+        types:		  'wistia.video,wistia.audio,bin',
+        mimetype:	  'video/x-flv1',
+        pluginspage:  'http://wistia.com/',
+        standards:     true,
+        ieAttrs: {
+            classid:  'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
+            type:	  'application/x-oleobject',
+            codebase: 'http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=' + $.fn.media.defaults.flashVersion
+        }
+    },
 	// special cases
 	iframe: {
 		name:  'iframe',
@@ -340,6 +353,33 @@ $.fn.media.flv = $.fn.media.mp3 = function(el, opts) {
 	opts.flashvars = $.extend({}, srcObj, opts.flashvars );
 	return $.fn.media.swf(el, opts);
 };
+    function wistiaMapper(type) {
+
+        return function(el, opts) {
+            var src = opts.src;
+
+            src = encodeURIComponent(src);
+            if (type == "audio") {
+                var key = "soundFile";
+                opts.src = $.fn.media.defaults.WistiaAudioPlayer;
+            }
+            else {
+                var key = "videoUrl";
+                opts.src = $.fn.media.defaults.WistiaVideoPlayer;
+            }
+
+            opts.src = opts.src + '?'+key+'=' + (src);
+            var srcObj = {};
+            srcObj[key] = src;
+            opts.flashvars = $.extend({}, srcObj, opts.flashvars );
+            return $.fn.media.swf(el, opts);
+        }
+    }
+
+    // map bin files to the swf player by default
+    $.fn.media["wistia.video"] = wistiaMapper("video");
+
+    $.fn.media["wistia.audio"] = wistiaMapper("audio");
 
 //
 //	Silverlight
@@ -393,7 +433,6 @@ $.fn.media.xaml = function(el, opts) {
 function generate(el, opts, player) {
 	var $el = $(el);
 	var o = $.fn.media.defaults.players[player];
-
 	if (player == 'iframe') {
 		var o = $('<iframe' + ' width="' + opts.width + '" height="' + opts.height + '" >');
 		o.attr('src', opts.src);
