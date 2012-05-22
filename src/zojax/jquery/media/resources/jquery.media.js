@@ -200,6 +200,14 @@ $.fn.media.defaults.players = {
             codebase: 'http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=' + $.fn.media.defaults.flashVersion
         }
     },
+    youtube: {
+        name:		  'youtube',
+        title:		  'YouTube Media',
+        types:		  'youtube',
+        mimetype:	  'video/x-flv1',
+        pluginspage:  'http://youtube.com/',
+        standards:     true
+    },
 	// special cases
 	iframe: {
 		name:  'iframe',
