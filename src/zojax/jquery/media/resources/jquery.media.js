@@ -446,9 +446,15 @@ function generate(el, opts, player) {
 		o.attr('src', opts.src);
 		o.css('backgroundColor', o.bgColor);
 	}
+    else if (player == 'youtube') {
+        if (opts.autoplay == true){opts.autoplay = 1}
+        else { opts.autoplay = 0 }
+        var o = $('<iframe class="youtube-player" type="text/html" frameborder="0"' + ' width="' + opts.width + '" height="' + opts.height + '" >');
+        o.attr('src', $.fn.media.defaults.youtubePlayer+opts.src+'?autoplay='+opts.autoplay);
+    }
 	else if ($.browser.msie) {
 		var a = ['<object width="' + opts.width + '" height="' + opts.height + '" '];
-		for (var key in opts.attrs)
+        for (var key in opts.attrs)
 			a.push(key + '="'+opts.attrs[key]+'" ');
 		for (var key in o.ieAttrs || {}) {
 			var v = o.ieAttrs[key];
@@ -498,7 +504,7 @@ function generate(el, opts, player) {
 	var cls = opts.cls ? (' class="' + opts.cls + '"') : '';
 	var $div = $('<div' + id + cls + '>');
 	$el.after($div).remove();
-	($.browser.msie || player == 'iframe') ? $div.append(o) : $div.html(a.join(''));
+	($.browser.msie || player == 'iframe' || player == 'youtube' ) ? $div.append(o) : $div.html(a.join(''));
 	if (opts.caption) $('<div>').appendTo($div).html(opts.caption);
 	return $div;
 };
