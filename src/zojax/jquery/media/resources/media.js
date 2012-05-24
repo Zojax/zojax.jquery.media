@@ -7,6 +7,7 @@ $(document).ready(function(){
     $.fn.media.defaults.types = [];
     $.fn.media.defaults.WistiaVideoPlayer =  'http://embed.wistia.com/flash/embed_player_v2.0.swf';
     $.fn.media.defaults.WistiaAudioPlayer =  'http://prime-cdn.wistia.com/flash/audio_player.swf';
+    $.fn.media.defaults.youtubePlayer =  'http://www.youtube.com/embed/';
     for (var i in $.fn.media.defaults.players) {
 	$.fn.media.defaults.types = $.fn.media.defaults.types.concat($.fn.media.defaults.players[i].types.split(','))
     };
